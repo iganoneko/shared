@@ -1,0 +1,20 @@
+export declare function documentHidden(): any;
+export declare function onVisibilityChange(listener: any, option?: any): void;
+export declare function onPageShow(listener: any, option?: any): void;
+export declare function offPageShow(listener: any, option?: any): void;
+export declare function onPageHide(listener: any, option?: any): void;
+export declare function offPageHide(listener: any, option?: any): void;
+export declare function onPageBeforeUnload(listener: any, option?: any): void;
+export declare function offPageBeforeUnload(listener: any, option?: any): void;
+export declare function onPageLoad(listener: any, option?: any): void;
+export declare function offPageLoad(listener: any, option?: any): void;
+export declare function onBlur(listener: any, option?: any): void;
+export declare function offBlur(listener: any, option?: any): void;
+export declare function onFocus(listener: any, option?: any): void;
+export declare function offFocus(listener: any, option?: any): void;
+export declare function scrollLock(lock: boolean): void;
+export declare const ScreenOrientation: {
+    PORTRAIT: string;
+    LANDSCAPE: string;
+};
+export declare function checkOrientation(): string;

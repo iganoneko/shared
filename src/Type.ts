@@ -1,0 +1,11 @@
+const toString = Object.prototype.toString;
+export const isFunction = (value) => toString.call(value) === "[object Function]";
+export const isArray = (value) => toString.call(value) === "[object Array]";
+export const isNumber = (value) => toString.call(value) === "[object Number]";
+export const isObject = (value) => toString.call(value) === "[object Object]";
+export const isString = (value) => toString.call(value) === "[object String]";
+export const isDate = (value) => toString.call(value) === "[object Date]";
+export const isBoolean = (value) => toString.call(value) === "[object Boolean]";
+export const isNull = (value) => toString.call(value) === "[object Null]";
+export const isUndefined = (value) => toString.call(value) === "[object Undefined]";
+export const isPlainObject = (value) => isObject(value) && value.constructor === Object;

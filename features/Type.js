@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var toString = Object.prototype.toString;
+exports.isFunction = function (value) { return toString.call(value) === "[object Function]"; };
+exports.isArray = function (value) { return toString.call(value) === "[object Array]"; };
+exports.isNumber = function (value) { return toString.call(value) === "[object Number]"; };
+exports.isObject = function (value) { return toString.call(value) === "[object Object]"; };
+exports.isString = function (value) { return toString.call(value) === "[object String]"; };
+exports.isDate = function (value) { return toString.call(value) === "[object Date]"; };
+exports.isBoolean = function (value) { return toString.call(value) === "[object Boolean]"; };
+exports.isNull = function (value) { return toString.call(value) === "[object Null]"; };
+exports.isUndefined = function (value) { return toString.call(value) === "[object Undefined]"; };
+exports.isPlainObject = function (value) { return exports.isObject(value) && value.constructor === Object; };

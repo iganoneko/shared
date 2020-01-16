@@ -1,0 +1,17 @@
+export declare const isDigit: (value: any) => boolean;
+export declare const isNumeric: (value: any) => boolean;
+export declare const isAlnum: (value: any) => boolean;
+export declare const isAlpha: (value: any) => boolean;
+export declare const isAlphaLower: (value: any) => boolean;
+export declare const isAlphaUpper: (value: any) => boolean;
+export declare const isWordConfChars: (value: any) => boolean;
+export declare const isEmail: (value: any) => boolean;
+export declare const isEmailLike: (value: any) => boolean;
+export declare const isHttpURL: (value: any) => boolean;
+export declare const isImageFileName: (value: any) => boolean;
+export declare const maxLength: (value: any, length: number) => boolean;
+export declare const minLength: (value: any, length: number) => boolean;
+export declare const isUUID: (value: string) => boolean;
+export declare const escapeRegExp: (str: string) => string;
+export declare function uuid(): string;
+export declare function countBytes(str: string): number;

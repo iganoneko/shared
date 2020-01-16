@@ -1,0 +1,23 @@
+{
+    "name": "@iganoneko/shared",
+    "version": "1.0.0",
+    "description": "iganoneko@gmail.com",
+    "scripts": {
+        "build": "rm -rf ./features && tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iganoneko/shared.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/iganoneko/shared/issues"
+    },
+    "homepage": "https://github.com/iganoneko/shared#readme",
+    "devDependencies": {
+        "typescript": "^3.7.2"
+    },
+    "optionalDependencies": {},
+    "dependencies": {}
+}
