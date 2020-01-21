@@ -1,9 +1,21 @@
+/**
+ * Object useful features
+ * @packageDocumentation
+ */
 import { isObject, isArray, isString, isNumber, isBoolean } from "./Type";
 
+/**
+ * Deep Clone Object 
+ * @param value Object
+ */
 export function clone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
+/**
+ * Delete keys without values to make them compact
+ * @param object Object
+ */
 export function compact(object: any) {
     if (object) {
         let key;
@@ -16,6 +28,11 @@ export function compact(object: any) {
     return object;
 }
 
+/**
+ * Sort by keys
+ * @param json JSON Object
+ * @param reverse Reverse
+ */
 export function sortByKeys(json: any, reverse: boolean = false) {
     if (isArray(json)) {
         json = json.map((value) => {

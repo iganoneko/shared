@@ -1,5 +1,15 @@
+/**
+ * Convert complex JavaScript type conversions properly
+ * @packageDocumentation
+ */
+
 import { isArray, isBoolean, isDate, isNull, isObject, isString, isUndefined } from "./Type";
 
+/**
+ * Convert to an integer.
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 export function inte(value: any, altValue: number = 0): number {
     if (isArray(value)) {
         return altValue;
@@ -11,6 +21,11 @@ export function inte(value: any, altValue: number = 0): number {
     return value;
 }
 
+/**
+ * Convert to an string
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 export function str(value: any, altValue?: string): string {
     if (isUndefined(altValue)) {
         altValue = null;
@@ -24,6 +39,11 @@ export function str(value: any, altValue?: string): string {
     return String(value);
 }
 
+/**
+ * Convert to an number
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 export function num(value: any, altValue: number = 0.0): number {
     if (isNull(value) || isUndefined(value) || isDate(value)) {
         return altValue;
@@ -36,6 +56,11 @@ export function num(value: any, altValue: number = 0.0): number {
     return value;
 }
 
+/**
+ * Convert to an boolean
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 export function bool(value: any, altValue?: boolean): boolean {
     if (!isBoolean(altValue)) {
         altValue = false;
@@ -49,6 +74,11 @@ export function bool(value: any, altValue?: boolean): boolean {
     return altValue;
 }
 
+/**
+ * Convert to an object
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 export function obj(value: any, altValue: Object = null): Object {
     let strValue: string = "" + value;
     if (isNull(value) ||
@@ -74,6 +104,9 @@ export function obj(value: any, altValue: Object = null): Object {
     }
 }
 
+/**
+ * @private
+ */
 function isJsonStr(str: string): boolean {
     let trimedStr: string = str.trim(),
         beginCh: string = trimedStr.charAt(0),

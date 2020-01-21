@@ -1,3 +1,7 @@
+[@iganoneko/shared](README.md) › [Globals](globals.md)
+
+# @iganoneko/shared
+
 # shared
 
 ## localStorage

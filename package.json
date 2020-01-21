@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "iganoneko@gmail.com",
     "scripts": {
-        "build": "rm -rf ./features && tsc"
+        "build": "rm -rf ./features && tsc",
+        "makedoc": "typedoc --hideSources --excludeNotExported --excludePrivate --plugin typedoc-plugin-markdown --exclude **/IStorage.ts --exclude **/AbstractStorage.ts --exclude **/DOMUtil.ts --exclude **/Retry.ts --out apidoc/ src/"
     },
     "repository": {
         "type": "git",
@@ -16,6 +17,8 @@
     },
     "homepage": "https://github.com/iganoneko/shared#readme",
     "devDependencies": {
+        "typedoc": "^0.16.6",
+        "typedoc-plugin-markdown": "^2.2.16",
         "typescript": "^3.7.2"
     },
     "optionalDependencies": {},

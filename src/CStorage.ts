@@ -86,9 +86,9 @@ function getExpiresDate(expires: IExpires): Date {
 }
 
 /**
- * Cookie Storage
+ * Input/Output to extended Cookie
  */
-export class CStorageBase extends AbstractStorage {
+export class CStorage extends AbstractStorage {
 
     public setItem(key: string, value: any, options: ICookieOptions = {}): void {
         if (key.match(/[^\w\.\-]/)) {
@@ -153,6 +153,6 @@ export class CStorageBase extends AbstractStorage {
     public get length() {
         return document.cookie.split(/\s*;\s*/).length;
     }
-}
+};
 
-export const CStorage = new CStorageBase();
+export default new CStorage();

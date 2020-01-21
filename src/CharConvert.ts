@@ -102,6 +102,10 @@ const FULL_TO_HALF_MAP = (function () {
     return result;
 }());
 
+/**
+ * Convert from full-width to half-width
+ * @param str String value
+ */
 export function fullToHalf(str: string) {
     if (typeof str === "string") {
         const length = str.length;
@@ -116,7 +120,11 @@ export function fullToHalf(str: string) {
     }
 }
 
-export function halfToFull(str: string) {
+/**
+ * Convert from half-width to full-width
+ * @param str String value
+ */
+export function halfToFull(str: string): string {
     if (typeof str === "string") {
         const length = str.length;
         const result = [];

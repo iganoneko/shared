@@ -1,6 +1,9 @@
 import { AbstractStorage } from "./AbstractStorage";
 
-export class SStorageBase extends AbstractStorage {
+/**
+ * Input/Output to extended localStorage
+ */
+export class SStorage extends AbstractStorage {
 
     public setItem(key: string, value: any): void {
         try {
@@ -45,5 +48,4 @@ export class SStorageBase extends AbstractStorage {
 
 }
 
-export const SStorage = new SStorageBase();
-
+export default new SStorage();

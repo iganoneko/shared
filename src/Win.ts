@@ -1,88 +1,33 @@
-// document > hidden
-let documentHiddenKey;
-let visibilityChangeEventType;
+/**
+ * Window object
+ * @packageDocumentation
+ */
 
-if (typeof document.hidden !== "undefined") {
-    documentHiddenKey = "hidden";
-    visibilityChangeEventType = "visibilitychange";
-}
-else if (typeof document.mozHidden !== "undefined") {
-    documentHiddenKey = "mozHidden";
-    visibilityChangeEventType = "mozvisibilitychange";
-}
-else if (typeof document.msHidden !== "undefined") {
-    documentHiddenKey = "msHidden";
-    visibilityChangeEventType = "msvisibilitychange";
-}
-else if (typeof document.webkitHidden !== "undefined") {
-    documentHiddenKey = "webkitHidden";
-    visibilityChangeEventType = "webkitvisibilitychange";
-} else {
-    documentHiddenKey = "hidden";
-    visibilityChangeEventType = "visibilitychange";
+type WindowEventType = "pageshow" | "pagehide" | "beforeunload" | "unload" | "blur" | "focus";
+
+/**
+ * window.addEventListener Wrapper
+ * @param eventType 
+ * @param listener 
+ * @param options 
+ */
+export function on(eventType: WindowEventType, listener, options?) {
+    window.addEventListener(eventType, listener, options);
 }
 
-const PAGE_SHOW = "pageshow";
-const PAGE_HIDE = "pagehide";
-const PAGE_BEFORE_UNLOAD = "beforeunload";
-const PAGE_UNLOAD = "unload";
-const BLUR = "blur";
-const FOCUS = "focus";
-
-export function documentHidden() {
-    return document[documentHiddenKey];
+/**
+ * window.addEventListener Wrapper
+ * @param eventType 
+ * @param listener 
+ */
+export function off(eventType: WindowEventType, listener) {
+    window.removeEventListener(eventType, listener);
 }
 
-export function onVisibilityChange(listener, option?) {
-    document.addEventListener(visibilityChangeEventType, listener, option);
-}
-
-export function onPageShow(listener, option?) {
-    windowAddEventListener(PAGE_SHOW, listener, option);
-}
-export function offPageShow(listener, option?) {
-    windowRemoveEventListener(PAGE_SHOW, listener, option);
-}
-
-export function onPageHide(listener, option?) {
-    windowAddEventListener(PAGE_HIDE, listener, option);
-}
-
-export function offPageHide(listener, option?) {
-    windowRemoveEventListener(PAGE_HIDE, listener, option);
-}
-
-export function onPageBeforeUnload(listener, option?) {
-    windowAddEventListener(PAGE_BEFORE_UNLOAD, listener, option);
-}
-
-export function offPageBeforeUnload(listener, option?) {
-    windowRemoveEventListener(PAGE_BEFORE_UNLOAD, listener, option);
-}
-
-export function onPageLoad(listener, option?) {
-    windowAddEventListener(PAGE_UNLOAD, listener, option);
-}
-
-export function offPageLoad(listener, option?) {
-    windowRemoveEventListener(PAGE_UNLOAD, listener, option);
-}
-
-export function onBlur(listener, option?) {
-    windowAddEventListener(BLUR, listener, option);
-}
-
-export function offBlur(listener, option?) {
-    windowRemoveEventListener(BLUR, listener, option);
-}
-
-export function onFocus(listener, option?) {
-    windowAddEventListener(FOCUS, listener, option);
-}
-export function offFocus(listener, option?) {
-    windowRemoveEventListener(FOCUS, listener, option);
-}
-
+/**
+ * Scroll lock
+ * @param lock true=lock 
+ */
 export function scrollLock(lock: boolean) {
     if (lock) {
         document.body.style.overflow = "hidden";
@@ -91,12 +36,20 @@ export function scrollLock(lock: boolean) {
     }
 }
 
+/**
+ * Screen Orientation Type
+ * checkOrientation() return value definition
+ */
 export const ScreenOrientation = {
     PORTRAIT: "portrait",
     LANDSCAPE: "landscape"
 };
 
-export function checkOrientation(): string {
+/**
+ * Get Orientation
+ * @see ScreenOrientation
+ */
+export function getOrientation(): string {
     const orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
     if (orientation) {
         if (orientation.type === "portrait-primary" || orientation.type === "portrait-secondary") {
@@ -115,12 +68,4 @@ export function checkOrientation(): string {
     } else {
         return ScreenOrientation.LANDSCAPE;
     }
-}
-
-function windowAddEventListener(eventType, listener, option?) {
-    window.addEventListener(eventType, listener, option);
-}
-
-function windowRemoveEventListener(eventType, listener, option?) {
-    window.removeEventListener(eventType, listener, option);
 }

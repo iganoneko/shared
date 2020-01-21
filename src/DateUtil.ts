@@ -1,80 +1,133 @@
+/**
+ * Compact date library
+ * @packageDocumentation
+ */
+
 const DAY: number = 86400000;
 const HOUR: number = 3600000;
 const MINUTE: number = 60000;
 const SECOND: number = 1000;
 
+/**
+ * Is Date1 before Date2
+ * @param date1 
+ * @param date2 
+ */
 export function isBefore(date1: Date, date2: Date) {
     return date1.getTime() < date2.getTime();
 }
 
+/**
+ * Is Date1 later than Date2
+ * @param date1 
+ * @param date2 
+ */
 export function isAfter(date1: Date, date2: Date) {
     return date1.getTime() > date2.getTime();
 }
 
+/**
+ * Is Date1 equal to Date2
+ * @param date1 
+ * @param date2 
+ */
 export function isEqual(date1: Date, date2: Date) {
     return date1.getTime() === date2.getTime();
 }
 
-export function isBeforeDate(date1: Date, date2: Date) {
-    return isBefore(cloneOnlyDate(date1), cloneOnlyDate(date2));
+export function isBeforeDay(date1: Date, date2: Date) {
+    return isBefore(clearTime(clone(date1)), clearTime(clone(date2)));
 }
 
-export function isAfterDate(date1: Date, date2: Date) {
-    return isAfter(cloneOnlyDate(date1), cloneOnlyDate(date2));
+export function isAfterDay(date1: Date, date2: Date) {
+    return isAfter(clearTime(clone(date1)), clearTime(clone(date2)));
 }
 
-export function isEqualDate(date1: Date, date2: Date) {
-    return isEqual(cloneOnlyDate(date1), cloneOnlyDate(date2));
+export function isEqualDay(date1: Date, date2: Date) {
+    return isEqual(clearTime(clone(date1)), clearTime(clone(date2)));
 }
 
-export function eachDate(from: Date, to: Date, callback: Function) {
-    from = cloneOnlyDate(from);
-    to = cloneOnlyDate(to);
+export function eachDays(from: Date, to: Date, callback: Function) {
+    from = clearTime(clone(from));
+    to = clearTime(clone(to));
     while (from < to) {
         callback(from);
         from = addDay(from, 1);
     }
 }
 
-export function dateDiff(date1: Date, date2: Date) {
-    const diffTime = cloneOnlyDate(date1).getTime() - cloneOnlyDate(date2).getTime();
-    return Math.floor(diffTime / DAY);
-}
-
+/**
+ * Clone Date Object
+ * @param date 
+ */
 export function clone(date: Date) {
     return new Date(date.getTime());
 }
 
+/**
+ * Add a year
+ * @param date 
+ * @param value 
+ */
 export function addYear(date: Date, value: number) {
     date.setFullYear(date.getFullYear() + value);
     return date;
 }
 
+/**
+ * Add a month
+ * @param date 
+ * @param value 
+ */
 export function addMonth(date: Date, value: number) {
     date.setMonth(date.getMonth() + value);
     return date;
 }
 
+/**
+ * Add a day
+ * @param date 
+ * @param value 
+ */
 export function addDay(date: Date, value: number) {
     date.setDate(date.getDate() + value);
     return date;
 }
 
-export function addHour(date: Date, value: number) {
+/**
+ * Add a hours
+ * @param date 
+ * @param value 
+ */
+export function addHours(date: Date, value: number) {
     date.setHours(date.getHours() + value);
     return date;
 }
 
-export function addMinute(date: Date, value: number) {
+/**
+ * Add a minutes
+ * @param date 
+ * @param value 
+ */
+export function addMinutes(date: Date, value: number) {
     date.setMinutes(date.getMinutes() + value);
     return date;
 }
 
-export function addSecond(date: Date, value: number) {
+/**
+ * Add a seconds
+ * @param date 
+ * @param value 
+ */
+export function addSeconds(date: Date, value: number) {
     date.setSeconds(date.getSeconds() + value);
     return date;
 }
 
+/**
+ * Clear time field
+ * @param date 
+ */
 export function clearTime(date: Date) {
     date.setHours(0);
     date.setMinutes(0);
@@ -84,13 +137,13 @@ export function clearTime(date: Date) {
 }
 
 export function getTimePerMonth(date: Date) {
-    const curr = cloneOnlyDate(date);
+    const curr = clearTime(clone(date));
     const next = addMonth(clone(curr), 1);
     return next.getTime() - curr.getTime();
 }
 
 export function getYearTime(date: Date) {
-    const curr = cloneOnlyDate(date);
+    const curr = clearTime(clone(date));
     const next = addYear(clone(curr), 1);
     return next.getTime() - curr.getTime();
 }
@@ -191,8 +244,4 @@ export function validMinute(value: number): boolean {
 
 export function validSecond(value: number): boolean {
     return (0 <= value) && (value <= 59);
-}
-
-function cloneOnlyDate(date: Date) {
-    return clearTime(clone(date));
 }
