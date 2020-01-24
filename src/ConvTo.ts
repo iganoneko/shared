@@ -1,12 +1,12 @@
 /**
- * Convert complex JavaScript type conversions properly
+ * Type conversion module
  * @packageDocumentation
  */
 
 import { isArray, isBoolean, isDate, isNull, isObject, isString, isUndefined } from "./Type";
 
 /**
- * Convert to an integer.
+ * Converts to an integer
  * @param value Value
  * @param altValue Alternative value to be returned when conversion fails
  */
@@ -22,7 +22,7 @@ export function inte(value: any, altValue: number = 0): number {
 }
 
 /**
- * Convert to an string
+ * Converts to a string
  * @param value Value
  * @param altValue Alternative value to be returned when conversion fails
  */
@@ -40,7 +40,7 @@ export function str(value: any, altValue?: string): string {
 }
 
 /**
- * Convert to an number
+ * Convert to a number
  * @param value Value
  * @param altValue Alternative value to be returned when conversion fails
  */
@@ -57,7 +57,7 @@ export function num(value: any, altValue: number = 0.0): number {
 }
 
 /**
- * Convert to an boolean
+ * Convert to boolean
  * @param value Value
  * @param altValue Alternative value to be returned when conversion fails
  */
@@ -75,7 +75,7 @@ export function bool(value: any, altValue?: boolean): boolean {
 }
 
 /**
- * Convert to an object
+ * Convert to object
  * @param value Value
  * @param altValue Alternative value to be returned when conversion fails
  */

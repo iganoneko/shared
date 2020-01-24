@@ -141,7 +141,7 @@ ___
 
 ▸ **isEmail**(`value`: any): *boolean*
 
-Is the string an email address
+The character string is an email address
 
 **Parameters:**
 
@@ -157,7 +157,7 @@ ___
 
 ▸ **isEmailLike**(`value`: any): *boolean*
 
-Is the string like an email address
+A character string close to the email address
 
 **Parameters:**
 
@@ -173,7 +173,7 @@ ___
 
 ▸ **isHttpURL**(`value`: any): *boolean*
 
-Is the string an HTTP URL
+The string is an HTTP URL
 
 **Parameters:**
 
@@ -221,7 +221,7 @@ ___
 
 ▸ **isUUID**(`value`: string): *boolean*
 
-Is the string a UUID
+The string is a UUID
 
 **Parameters:**
 

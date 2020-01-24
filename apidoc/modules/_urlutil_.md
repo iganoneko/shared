@@ -2,7 +2,7 @@
 
 # External module: "URLUtil"
 
-Object useful features
+URL utilities
 
 ## Index
 
@@ -17,7 +17,7 @@ Object useful features
 
 ▸ **urlDec**(`value`: string): *string*
 
-URLデコードする
+URL decode
 
 **Parameters:**
 
@@ -33,7 +33,7 @@ ___
 
 ▸ **urlEnc**(`value`: string): *string*
 
-URLエンコードする
+URL encode
 
 **Parameters:**
 

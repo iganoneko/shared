@@ -2,7 +2,7 @@
 
 # External module: "Win"
 
-Window object
+Window object support
 
 ## Index
 

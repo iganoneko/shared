@@ -103,6 +103,10 @@ var FULL_TO_HALF_MAP = (function () {
     });
     return result;
 }());
+/**
+ * Convert from full-width to half-width
+ * @param str String value
+ */
 function fullToHalf(str) {
     if (typeof str === "string") {
         var length_1 = str.length;
@@ -118,6 +122,10 @@ function fullToHalf(str) {
     }
 }
 exports.fullToHalf = fullToHalf;
+/**
+ * Convert from half-width to full-width
+ * @param str String value
+ */
 function halfToFull(str) {
     if (typeof str === "string") {
         var length_2 = str.length;

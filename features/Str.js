@@ -1,20 +1,73 @@
 "use strict";
+/**
+ * String useful features
+ * @packageDocumentation
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Is the string digit character
+ * @param value string value
+ */
 exports.isDigit = function (value) { return /^\d+$/.test(value); };
+/**
+ * Is the string numeric
+ * @param value
+ */
 exports.isNumeric = function (value) { return /^[-+]?[0-9]+(\.[0-9]+)?$/.test(value); };
+/**
+ * Is the string alphanumeric
+ * @param value
+ */
 exports.isAlnum = function (value) { return /^[a-zA-Z\d]+$/.test(String(value)); };
+/**
+ * Is the string a letter
+ * @param value
+ */
 exports.isAlpha = function (value) { return /^[a-zA-Z]+$/.test(String(value)); };
+/**
+ * Is the string lowercase
+ * @param value
+ */
 exports.isAlphaLower = function (value) { return /^[a-z]+$/.test(String(value)); };
+/**
+ * Is the string uppercase
+ * @param value
+ */
 exports.isAlphaUpper = function (value) { return /^[A-Z]+$/.test(String(value)); };
-exports.isWordConfChars = function (value) { return /^\w+$/.test(String(value)); };
+/**
+ * Is the string an email address
+ * @param value
+ */
 exports.isEmail = function (value) { return /^[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~.]+@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+){1,100}[a-zA-Z0-9]$/.test(value); };
+/**
+ * Is the string like an email address
+ * @param value
+ */
 exports.isEmailLike = function (value) { return typeof value === "string" && value.indexOf("@") !== -1; };
+/**
+ * Is the string an HTTP URL
+ * @param value
+ */
 exports.isHttpURL = function (value) { return /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value); };
+/**
+ * String is image file name
+ * @param value
+ */
 exports.isImageFileName = function (value) { return /\.(gif|jpg|png)$/.test(value); };
-exports.maxLength = function (value, length) { return String(value).length <= length; };
-exports.minLength = function (value, length) { return length <= String(value).length; };
+/**
+ * Is the string a UUID
+ * @param value
+ * @param length
+ */
 exports.isUUID = function (value) { return /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/.test(value); };
+/**
+ * Escape regexp pattern string
+ * @param str
+ */
 exports.escapeRegExp = function (str) { return str.replace(/([.*+?^=!:${}()|[\]\/\\])/g, "\\$1"); };
+/**
+ * generate uuid
+ */
 function uuid() {
     var result = "";
     for (var i = 0; i < 32; i++) {
@@ -27,6 +80,10 @@ function uuid() {
     return result;
 }
 exports.uuid = uuid;
+/**
+ * Count bytes
+ * @param str
+ */
 function countBytes(str) {
     var byteLen = 0;
     for (var i = 0; i < str.length; i++) {

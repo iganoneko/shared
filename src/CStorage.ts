@@ -41,13 +41,6 @@ export interface ICookieOptions {
     samesite?: string;
 }
 
-/**
- * Convert cookie expiration to milliseconds
- * return expires.day + expires.hour + expires.minute 
- *
- * @param expires Cookie expiration
- * @return UTC time (ms)
- */
 function convertExpiresTime(expires: IExpires): number {
     let result: number = 0;
     if (expires.day) {
@@ -62,12 +55,6 @@ function convertExpiresTime(expires: IExpires): number {
     return result;
 }
 
-/**
- * Convert to cookie expiration
- *
- * @param expires Cookie expiration
- * @return Cookie expiration Date
- */
 function getExpiresDate(expires: IExpires): Date {
     if (expires.target) {
         return expires.target;

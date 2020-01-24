@@ -32,13 +32,14 @@ export interface ICookieOptions {
     samesite?: string;
 }
 /**
- * Cookie Storage
+ * Input/Output to extended Cookie
  */
-export declare class CStorageBase extends AbstractStorage {
+export declare class CStorage extends AbstractStorage {
     setItem(key: string, value: any, options?: ICookieOptions): void;
     getItem(key: string): string;
     removeItem(key: string): void;
     clear(): void;
     get length(): number;
 }
-export declare const CStorage: CStorageBase;
+declare const _default: CStorage;
+export default _default;

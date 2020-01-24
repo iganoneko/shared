@@ -20,13 +20,6 @@ var DAY = 86400000;
 var HOUR = 3600000;
 var MINUTE = 60000;
 var EXPIRES_DATE = new Date(2000, 1, 1, 0, 0, 0, 0);
-/**
- * Convert cookie expiration to milliseconds
- * return expires.day + expires.hour + expires.minute
- *
- * @param expires Cookie expiration
- * @return UTC time (ms)
- */
 function convertExpiresTime(expires) {
     var result = 0;
     if (expires.day) {
@@ -40,12 +33,6 @@ function convertExpiresTime(expires) {
     }
     return result;
 }
-/**
- * Convert to cookie expiration
- *
- * @param expires Cookie expiration
- * @return Cookie expiration Date
- */
 function getExpiresDate(expires) {
     if (expires.target) {
         return expires.target;
@@ -61,14 +48,14 @@ function getExpiresDate(expires) {
     return date;
 }
 /**
- * Cookie Storage
+ * Input/Output to extended Cookie
  */
-var CStorageBase = /** @class */ (function (_super) {
-    __extends(CStorageBase, _super);
-    function CStorageBase() {
+var CStorage = /** @class */ (function (_super) {
+    __extends(CStorage, _super);
+    function CStorage() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    CStorageBase.prototype.setItem = function (key, value, options) {
+    CStorage.prototype.setItem = function (key, value, options) {
         if (options === void 0) { options = {}; }
         if (key.match(/[^\w\.\-]/)) {
             throw new Error("Invalid key character");
@@ -106,18 +93,18 @@ var CStorageBase = /** @class */ (function (_super) {
         }
         document.cookie = cookie.join("; ");
     };
-    CStorageBase.prototype.getItem = function (key) {
+    CStorage.prototype.getItem = function (key) {
         var regexp = new RegExp("\\b" + Str_1.escapeRegExp(key) + "=([^\\;]+)");
         var mat = regexp.exec(document.cookie);
         return mat ? mat[1] : null;
     };
-    CStorageBase.prototype.removeItem = function (key) {
+    CStorage.prototype.removeItem = function (key) {
         try {
             document.cookie = key + "=; expires=" + EXPIRES_DATE.toUTCString();
         }
         catch (e) { }
     };
-    CStorageBase.prototype.clear = function () {
+    CStorage.prototype.clear = function () {
         var _this = this;
         var cookies = document.cookie.split(/\s*;\s*/);
         cookies.forEach(function (cookie) {
@@ -125,14 +112,15 @@ var CStorageBase = /** @class */ (function (_super) {
             _this.removeItem(name);
         });
     };
-    Object.defineProperty(CStorageBase.prototype, "length", {
+    Object.defineProperty(CStorage.prototype, "length", {
         get: function () {
             return document.cookie.split(/\s*;\s*/).length;
         },
         enumerable: true,
         configurable: true
     });
-    return CStorageBase;
+    return CStorage;
 }(AbstractStorage_1.AbstractStorage));
-exports.CStorageBase = CStorageBase;
-exports.CStorage = new CStorageBase();
+exports.CStorage = CStorage;
+;
+exports.default = new CStorage();

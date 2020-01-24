@@ -1,6 +1,15 @@
 "use strict";
+/**
+ * Type conversion module
+ * @packageDocumentation
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var Type_1 = require("./Type");
+/**
+ * Converts to an integer
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 function inte(value, altValue) {
     if (altValue === void 0) { altValue = 0; }
     if (Type_1.isArray(value)) {
@@ -13,6 +22,11 @@ function inte(value, altValue) {
     return value;
 }
 exports.inte = inte;
+/**
+ * Converts to a string
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 function str(value, altValue) {
     if (Type_1.isUndefined(altValue)) {
         altValue = null;
@@ -26,6 +40,11 @@ function str(value, altValue) {
     return String(value);
 }
 exports.str = str;
+/**
+ * Convert to a number
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 function num(value, altValue) {
     if (altValue === void 0) { altValue = 0.0; }
     if (Type_1.isNull(value) || Type_1.isUndefined(value) || Type_1.isDate(value)) {
@@ -39,6 +58,11 @@ function num(value, altValue) {
     return value;
 }
 exports.num = num;
+/**
+ * Convert to boolean
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 function bool(value, altValue) {
     if (!Type_1.isBoolean(altValue)) {
         altValue = false;
@@ -52,6 +76,11 @@ function bool(value, altValue) {
     return altValue;
 }
 exports.bool = bool;
+/**
+ * Convert to object
+ * @param value Value
+ * @param altValue Alternative value to be returned when conversion fails
+ */
 function obj(value, altValue) {
     if (altValue === void 0) { altValue = null; }
     var strValue = "" + value;
@@ -80,6 +109,9 @@ function obj(value, altValue) {
     }
 }
 exports.obj = obj;
+/**
+ * @private
+ */
 function isJsonStr(str) {
     var trimedStr = str.trim(), beginCh = trimedStr.charAt(0), endCh = trimedStr.charAt(trimedStr.length - 1);
     if (beginCh === "{" && endCh === "}") {

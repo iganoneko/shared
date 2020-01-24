@@ -1,45 +1,58 @@
+/**
+ * Retry option
+ */
 export interface IRetryOptions {
+    /** Retry times */
     maxRetries?: number;
+    /** Wait time before retry */
     delay?: number;
-    determineRetry?: (error?: any) => boolean;
+    /** Judge whether to retry */
+    determineIfRetry?: (error?: any) => boolean;
+    /** timer set before retry */
     onSetupTimer?: () => void;
 }
 
 /**
  * @example
  *
- *     const retryFunc = Retry.makeFn((params) => {
- *       return promise;
- *     });
+ * ```
+ * import toRetryFunc from "@iganoneko/shared/features/Retry"
+ * 
+ * const originalAsyncFn = (params) => {
+ *   // return promise;
+ * }
+ * 
+ * const retryFunc = toRetryFunc(originalAsyncFn);
  *
- *     retryFunc(params).then(() => {
+ * retryFunc(params).then(() => {
  *
- *     }).catch(()=> {
+ * }).catch(()=> {
  *
- *     });
- *
- * @example
- *
- *     options.determineRetry = error => {
- *          return error.status !== 404 && !(error.status >= 500);
- *     }
+ * });
+ * ```
+ * 
+ * ```
+ * options.determineIfRetry = error => {
+ *   return error.status !== 404 && !(error.status >= 500);
+ * }
+ * ```
  */
-export function extendFn<P, R>(execution: (params?: P) => Promise<R>, options: IRetryOptions = {}) {
+export default function <P, R>(execution: (params?: P) => Promise<R>, options: IRetryOptions = {}) {
     if (!options.delay) {
         options.delay = 1000;
     }
     if (!options.maxRetries) {
         options.maxRetries = 5;
     }
-    if (!options.determineRetry) {
-        options.determineRetry = () => true;
+    if (!options.determineIfRetry) {
+        options.determineIfRetry = () => true;
     }
     if (!options.onSetupTimer) {
         options.onSetupTimer = () => { };
     }
 
     const {
-        determineRetry,
+        determineIfRetry,
         onSetupTimer
     } = options;
     let {
@@ -56,7 +69,7 @@ export function extendFn<P, R>(execution: (params?: P) => Promise<R>, options: I
             const retry = () => {
                 execution(params).then(resolve).catch((error) => {
                     if (maxRetries-- > 0) {
-                        if (determineRetry(error)) {
+                        if (determineIfRetry(error)) {
                             window.setTimeout(() => retry(), delay);
                             onSetupTimer();
                             return;

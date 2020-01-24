@@ -1,20 +1,37 @@
-export declare function documentHidden(): any;
-export declare function onVisibilityChange(listener: any, option?: any): void;
-export declare function onPageShow(listener: any, option?: any): void;
-export declare function offPageShow(listener: any, option?: any): void;
-export declare function onPageHide(listener: any, option?: any): void;
-export declare function offPageHide(listener: any, option?: any): void;
-export declare function onPageBeforeUnload(listener: any, option?: any): void;
-export declare function offPageBeforeUnload(listener: any, option?: any): void;
-export declare function onPageLoad(listener: any, option?: any): void;
-export declare function offPageLoad(listener: any, option?: any): void;
-export declare function onBlur(listener: any, option?: any): void;
-export declare function offBlur(listener: any, option?: any): void;
-export declare function onFocus(listener: any, option?: any): void;
-export declare function offFocus(listener: any, option?: any): void;
+/**
+ * Window object
+ * @packageDocumentation
+ */
+declare type WindowEventType = "pageshow" | "pagehide" | "beforeunload" | "unload" | "blur" | "focus";
+/**
+ * window.addEventListener Wrapper
+ * @param eventType
+ * @param listener
+ * @param options
+ */
+export declare function on(eventType: WindowEventType, listener: any, options?: any): void;
+/**
+ * window.addEventListener Wrapper
+ * @param eventType
+ * @param listener
+ */
+export declare function off(eventType: WindowEventType, listener: any): void;
+/**
+ * Scroll lock
+ * @param lock true=lock
+ */
 export declare function scrollLock(lock: boolean): void;
+/**
+ * Screen Orientation Type
+ * checkOrientation() return value definition
+ */
 export declare const ScreenOrientation: {
     PORTRAIT: string;
     LANDSCAPE: string;
 };
-export declare function checkOrientation(): string;
+/**
+ * Get Orientation
+ * @see ScreenOrientation
+ */
+export declare function getOrientation(): string;
+export {};

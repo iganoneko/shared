@@ -1,5 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Detect web browser
+ * @param userAgent userAgent.  defaults = navigator.userAgent
+ */
 function detect(userAgent) {
     if (userAgent === void 0) { userAgent = navigator.userAgent; }
     userAgent = userAgent.toLowerCase();

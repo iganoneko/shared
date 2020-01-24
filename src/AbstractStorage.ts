@@ -20,7 +20,7 @@ export abstract class AbstractStorage implements IStorage {
     public abstract getItem(key: string): string;
 
     /**
-     * Delete an item
+     * Deleting items
      * @param key 
      */
     public abstract removeItem(key: string): void;

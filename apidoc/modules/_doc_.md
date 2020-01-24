@@ -2,7 +2,7 @@
 
 # External module: "Doc"
 
-cross-browser document
+Cross-browser support for document objects
 
 ## Index
 
@@ -17,7 +17,7 @@ cross-browser document
 
 • **documentHiddenKey**: *any* = document[documentHiddenKey_]
 
-Cross-Browser document.hidden
+Cross-browser support for document.hidden
 
 ```
 document.addEventListener(Doc.visibilitychange, function() {...});
@@ -29,7 +29,7 @@ ___
 
 • **visibilityChangeEventType**: *any* = visibilityChangeEventType_
 
-Cross-Browser document.visibilitychange
+Cross-browser support for document.visibilitychange
 
 ```
 document[Doc.visibilityChangeEventType]

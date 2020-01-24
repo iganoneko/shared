@@ -14,12 +14,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var AbstractStorage_1 = require("./AbstractStorage");
-var LStorageBase = /** @class */ (function (_super) {
-    __extends(LStorageBase, _super);
-    function LStorageBase() {
+/**
+ * Input/Output to extended localStorage
+ */
+var LStorage = /** @class */ (function (_super) {
+    __extends(LStorage, _super);
+    function LStorage() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    LStorageBase.prototype.setItem = function (key, value) {
+    LStorage.prototype.setItem = function (key, value) {
         try {
             if (typeof value !== "string") {
                 value = JSON.stringify(value);
@@ -28,7 +31,7 @@ var LStorageBase = /** @class */ (function (_super) {
         }
         catch (e) { }
     };
-    LStorageBase.prototype.getItem = function (key) {
+    LStorage.prototype.getItem = function (key) {
         try {
             var val = localStorage.getItem(key);
             if (val) {
@@ -40,19 +43,19 @@ var LStorageBase = /** @class */ (function (_super) {
             return null;
         }
     };
-    LStorageBase.prototype.removeItem = function (key) {
+    LStorage.prototype.removeItem = function (key) {
         try {
             localStorage.removeItem(key);
         }
         catch (e) { }
     };
-    LStorageBase.prototype.clear = function () {
+    LStorage.prototype.clear = function () {
         try {
             localStorage.clear();
         }
         catch (e) { }
     };
-    Object.defineProperty(LStorageBase.prototype, "length", {
+    Object.defineProperty(LStorage.prototype, "length", {
         get: function () {
             try {
                 return localStorage.length;
@@ -64,7 +67,7 @@ var LStorageBase = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    return LStorageBase;
+    return LStorage;
 }(AbstractStorage_1.AbstractStorage));
-exports.LStorageBase = LStorageBase;
-exports.LStorage = new LStorageBase();
+exports.LStorage = LStorage;
+exports.default = new LStorage();

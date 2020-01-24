@@ -1,26 +1,34 @@
 export interface IRetryOptions {
+    /** Retry times */
     maxRetries?: number;
+    /** Wait time before retry */
     delay?: number;
-    determineRetry?: (error?: any) => boolean;
+    /** Judge whether to retry */
+    determineIfRetry?: (error?: any) => boolean;
+    /** timer set before retry */
     onSetupTimer?: () => void;
 }
 /**
  * @example
  *
- *     const retryFunc = Retry.makeFn((params) => {
- *       return promise;
- *     });
+ * ```
+ * import newRetry from "@iganoneko/shared/features/Retry"
  *
- *     retryFunc(params).then(() => {
+ * const retryFunc = newRetry((params) => {
+ *   return promise;
+ * });
  *
- *     }).catch(()=> {
+ * retryFunc(params).then(() => {
  *
- *     });
+ * }).catch(()=> {
+ *
+ * });
+ * ```
  *
  * @example
  *
- *     options.determineRetry = error => {
+ *     options.determineIfRetry = error => {
  *          return error.status !== 404 && !(error.status >= 500);
  *     }
  */
-export declare function extendFn<P, R>(execution: (params?: P) => Promise<R>, options?: IRetryOptions): (params?: any) => Promise<unknown>;
+export default function <P, R>(execution: (params?: P) => Promise<R>, options?: IRetryOptions): (params?: any) => Promise<unknown>;

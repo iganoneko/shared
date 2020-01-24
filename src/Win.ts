@@ -1,5 +1,5 @@
 /**
- * Window object
+ * Window object support
  * @packageDocumentation
  */
 

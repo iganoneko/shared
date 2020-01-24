@@ -14,12 +14,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var AbstractStorage_1 = require("./AbstractStorage");
-var SStorageBase = /** @class */ (function (_super) {
-    __extends(SStorageBase, _super);
-    function SStorageBase() {
+/**
+ * Input/Output to extended localStorage
+ */
+var SStorage = /** @class */ (function (_super) {
+    __extends(SStorage, _super);
+    function SStorage() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SStorageBase.prototype.setItem = function (key, value) {
+    SStorage.prototype.setItem = function (key, value) {
         try {
             if (typeof value !== "string") {
                 value = JSON.stringify(value);
@@ -28,7 +31,7 @@ var SStorageBase = /** @class */ (function (_super) {
         }
         catch (e) { }
     };
-    SStorageBase.prototype.getItem = function (key) {
+    SStorage.prototype.getItem = function (key) {
         try {
             var val = sessionStorage.getItem(key);
             if (val) {
@@ -40,19 +43,19 @@ var SStorageBase = /** @class */ (function (_super) {
             return null;
         }
     };
-    SStorageBase.prototype.removeItem = function (key) {
+    SStorage.prototype.removeItem = function (key) {
         try {
             sessionStorage.removeItem(key);
         }
         catch (e) { }
     };
-    SStorageBase.prototype.clear = function () {
+    SStorage.prototype.clear = function () {
         try {
             sessionStorage.clear();
         }
         catch (e) { }
     };
-    Object.defineProperty(SStorageBase.prototype, "length", {
+    Object.defineProperty(SStorage.prototype, "length", {
         get: function () {
             try {
                 return sessionStorage.length;
@@ -64,7 +67,7 @@ var SStorageBase = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    return SStorageBase;
+    return SStorage;
 }(AbstractStorage_1.AbstractStorage));
-exports.SStorageBase = SStorageBase;
-exports.SStorage = new SStorageBase();
+exports.SStorage = SStorage;
+exports.default = new SStorage();

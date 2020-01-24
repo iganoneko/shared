@@ -40,19 +40,19 @@ export const isAlphaLower = (value: any) => /^[a-z]+$/.test(String(value));
 export const isAlphaUpper = (value: any) => /^[A-Z]+$/.test(String(value));
 
 /**
- * Is the string an email address
+ * The character string is an email address
  * @param value 
  */
 export const isEmail = (value: any) => /^[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~.]+@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+){1,100}[a-zA-Z0-9]$/.test(value);
 
 /**
- * Is the string like an email address
+ * A character string close to the email address
  * @param value 
  */
 export const isEmailLike = (value: any) => typeof value === "string" && value.indexOf("@") !== -1;
 
 /**
- * Is the string an HTTP URL
+ * The string is an HTTP URL
  * @param value 
  */
 export const isHttpURL = (value: any) => /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value);
@@ -64,7 +64,7 @@ export const isHttpURL = (value: any) => /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+
 export const isImageFileName = (value: any) => /\.(gif|jpg|png)$/.test(value);
 
 /**
- * Is the string a UUID
+ * The string is a UUID
  * @param value 
  * @param length 
  */

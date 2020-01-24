@@ -1,10 +1,10 @@
 /**
- * Object useful features
+ * URL utilities
  * @packageDocumentation
  */
 
 /**
- * URLエンコードする
+ * URL encode
  * @param value 
  */
 export function urlEnc(value: string): string {
@@ -12,7 +12,7 @@ export function urlEnc(value: string): string {
 }
 
 /**
- * URLデコードする
+ * URL decode
  * @param value 
  */
 export function urlDec(value: string): string {

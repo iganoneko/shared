@@ -9,6 +9,7 @@ Object useful features
 ### Functions
 
 * [clone](_obj_.md#clone)
+* [cloneDeep](_obj_.md#clonedeep)
 * [compact](_obj_.md#compact)
 * [sortByKeys](_obj_.md#sortbykeys)
 
@@ -18,13 +19,29 @@ Object useful features
 
 ▸ **clone**(`value`: any): *any*
 
-Deep Clone Object
+Clone Object
 
 **Parameters:**
 
 Name | Type | Description |
 ------ | ------ | ------ |
 `value` | any | Object  |
+
+**Returns:** *any*
+
+___
+
+###  cloneDeep
+
+▸ **cloneDeep**(`src`: any): *any*
+
+Clone deep
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`src` | any |   |
 
 **Returns:** *any*
 

@@ -1,9 +1,13 @@
 import { AbstractStorage } from "./AbstractStorage";
-export declare class SStorageBase extends AbstractStorage {
+/**
+ * Input/Output to extended localStorage
+ */
+export declare class SStorage extends AbstractStorage {
     setItem(key: string, value: any): void;
     getItem(key: string): string;
     removeItem(key: string): void;
     clear(): void;
     get length(): number;
 }
-export declare const SStorage: SStorageBase;
+declare const _default: SStorage;
+export default _default;

@@ -2,14 +2,46 @@
  * Object useful features
  * @packageDocumentation
  */
-import { isObject, isArray, isString, isNumber, isBoolean } from "./Type";
+import { isFunction, isObject, isNull, isUndefined, isPlainObject, isArray, isString, isNumber, isDate, isBoolean, isRegExp } from "./Type";
+
+const isObject_ = data => isObject(data) || isPlainObject(data);
+const toString_ = Object.prototype.toString;
 
 /**
- * Deep Clone Object 
+ * Clone Object 
  * @param value Object
  */
 export function clone(value) {
     return JSON.parse(JSON.stringify(value));
+}
+
+/**
+ * Clone deep
+ * @param src 
+ */
+export function cloneDeep(src) {
+    if (isArray(src)) {
+        return src.map(cloneDeep);
+    }
+    if (isDate(src)) {
+        return new Date(src.getTime());
+    }
+    if (isNull(src) || isUndefined(src) || isString(src) || isNumber(src) || isBoolean(src)) {
+        return src;
+    }
+    if (isFunction(src)) {
+        // TODO
+        return src;
+    }
+    if (isRegExp(src)) {
+        return new RegExp(src.source, src.flags);
+    }
+    if (isObject_(src)) {
+        const dest = {};
+        Object.keys(src).forEach((key) => dest[key] = cloneDeep(src[key]));
+        return dest;
+    }
+    return src;
 }
 
 /**
@@ -51,7 +83,7 @@ export function sortByKeys(json: any, reverse: boolean = false) {
         }
         sortedKeys.forEach((key) => {
             const value = json[key];
-            if (isString(value)) {
+            if (isObject(value)) {
                 result[key] = sortByKeys(value);
             } else {
                 result[key] = value;

@@ -16,6 +16,7 @@ Determine the type
 * [isNumber](_type_.md#const-isnumber)
 * [isObject](_type_.md#const-isobject)
 * [isPlainObject](_type_.md#const-isplainobject)
+* [isRegExp](_type_.md#const-isregexp)
 * [isString](_type_.md#const-isstring)
 * [isUndefined](_type_.md#const-isundefined)
 
@@ -25,7 +26,7 @@ Determine the type
 
 ▸ **isArray**(`value`: any): *boolean*
 
-Is the variable a Array
+is Array
 
 **Parameters:**
 
@@ -41,7 +42,7 @@ ___
 
 ▸ **isBoolean**(`value`: any): *boolean*
 
-Is the variable a Boolean
+is Boolean
 
 **Parameters:**
 
@@ -57,7 +58,7 @@ ___
 
 ▸ **isDate**(`value`: any): *boolean*
 
-Is the variable a Date
+is Date
 
 **Parameters:**
 
@@ -73,7 +74,7 @@ ___
 
 ▸ **isFunction**(`value`: any): *boolean*
 
-Is the variable a function
+is function
 
 **Parameters:**
 
@@ -89,7 +90,7 @@ ___
 
 ▸ **isNull**(`value`: any): *boolean*
 
-Is the variable a Null
+is null
 
 **Parameters:**
 
@@ -105,7 +106,7 @@ ___
 
 ▸ **isNumber**(`value`: any): *boolean*
 
-Is the variable a Number
+is Number
 
 **Parameters:**
 
@@ -121,7 +122,7 @@ ___
 
 ▸ **isObject**(`value`: any): *boolean*
 
-Is the variable a Object
+is Object
 
 **Parameters:**
 
@@ -137,7 +138,23 @@ ___
 
 ▸ **isPlainObject**(`value`: any): *boolean*
 
-Is the variable a Plain Object
+is Plain Object
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`value` | any |   |
+
+**Returns:** *boolean*
+
+___
+
+### `Const` isRegExp
+
+▸ **isRegExp**(`value`: any): *boolean*
+
+is RegExp
 
 **Parameters:**
 
@@ -153,7 +170,7 @@ ___
 
 ▸ **isString**(`value`: any): *boolean*
 
-Is the variable a String
+is String
 
 **Parameters:**
 
@@ -169,7 +186,7 @@ ___
 
 ▸ **isUndefined**(`value`: any): *boolean*
 
-Is the variable a undefined
+is undefined
 
 **Parameters:**
 

@@ -3,65 +3,70 @@
  * @packageDocumentation
  */
 
-//
 const toString = Object.prototype.toString;
 
 /**
- * Is the variable a function
+ * is function
  * @param value 
  */
 export const isFunction = (value) => toString.call(value) === "[object Function]";
 
 /**
- * Is the variable a Array
+ * is Array
  * @param value 
  */
 export const isArray = (value) => toString.call(value) === "[object Array]";
 
 /**
- * Is the variable a Number
+ * is Number
  * @param value 
  */
 export const isNumber = (value) => toString.call(value) === "[object Number]";
 
 /**
- * Is the variable a Object
+ * is Object
  * @param value 
  */
 export const isObject = (value) => toString.call(value) === "[object Object]";
 
 /**
- * Is the variable a String
+ * is String
  * @param value 
  */
 export const isString = (value) => toString.call(value) === "[object String]";
 
 /**
- * Is the variable a Date
+ * is Date
  * @param value 
  */
 export const isDate = (value) => toString.call(value) === "[object Date]";
 
 /**
- * Is the variable a Boolean
+ * is Boolean
  * @param value 
  */
 export const isBoolean = (value) => toString.call(value) === "[object Boolean]";
 
 /**
- * Is the variable a Null
+ * is RegExp
+ * @param value 
+ */
+export const isRegExp = (value) => toString.call(value) === "[object RegExp]";
+
+/**
+ * is null
  * @param value 
  */
 export const isNull = (value) => toString.call(value) === "[object Null]";
 
 /**
- * Is the variable a undefined
+ * is undefined
  * @param value 
  */
 export const isUndefined = (value) => toString.call(value) === "[object Undefined]";
 
 /**
- * Is the variable a Plain Object
+ * is Plain Object
  * @param value 
  */
 export const isPlainObject = (value) => isObject(value) && value.constructor === Object;

@@ -2,7 +2,7 @@
 
 # External module: "ConvTo"
 
-Convert complex JavaScript type conversions properly
+Type conversion module
 
 ## Index
 
@@ -20,7 +20,7 @@ Convert complex JavaScript type conversions properly
 
 ▸ **bool**(`value`: any, `altValue?`: boolean): *boolean*
 
-Convert to an boolean
+Convert to boolean
 
 **Parameters:**
 
@@ -37,7 +37,7 @@ ___
 
 ▸ **inte**(`value`: any, `altValue`: number): *number*
 
-Convert to an integer.
+Converts to an integer
 
 **Parameters:**
 
@@ -54,7 +54,7 @@ ___
 
 ▸ **num**(`value`: any, `altValue`: number): *number*
 
-Convert to an number
+Convert to a number
 
 **Parameters:**
 
@@ -71,7 +71,7 @@ ___
 
 ▸ **obj**(`value`: any, `altValue`: Object): *Object*
 
-Convert to an object
+Convert to object
 
 **Parameters:**
 
@@ -88,7 +88,7 @@ ___
 
 ▸ **str**(`value`: any, `altValue?`: string): *string*
 
-Convert to an string
+Converts to a string
 
 **Parameters:**
 
