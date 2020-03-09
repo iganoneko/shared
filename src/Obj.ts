@@ -5,7 +5,6 @@
 import { isFunction, isObject, isNull, isUndefined, isPlainObject, isArray, isString, isNumber, isDate, isBoolean, isRegExp } from "./Type";
 
 const isObject_ = data => isObject(data) || isPlainObject(data);
-const toString_ = Object.prototype.toString;
 
 /**
  * Clone Object 
@@ -50,9 +49,9 @@ export function cloneDeep(src) {
  */
 export function compact(object: any) {
     if (object) {
-        let key;
-        for (key in object) {
-            if (!validValue(object[key])) {
+        for (const key in object) {
+            const val = object[key];
+            if (isNull(val) || isUndefined(val) || val === "") {
                 delete object[key];
             }
         }
@@ -91,14 +90,4 @@ export function sortByKeys(json: any, reverse: boolean = false) {
         });
         return result;
     }
-}
-
-function validValue(val: any) {
-    if (isBoolean(val)) {
-        return true;
-    }
-    if (isNumber(val)) {
-        return !isNaN(val);
-    }
-    return !!val;
 }

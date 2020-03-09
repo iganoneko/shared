@@ -58,6 +58,12 @@ export const isEmailLike = (value: any) => typeof value === "string" && value.in
 export const isHttpURL = (value: any) => /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value);
 
 /**
+ * IP Address
+ * @param value 
+ */
+export const isIPAddress = (value: any) => /^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/[1-9]|\/(1|2)[0-9]|\/3[0-2])?$/.test(value);
+
+/**
  * String is image file name
  * @param value 
  */
