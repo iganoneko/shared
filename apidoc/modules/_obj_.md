@@ -49,17 +49,21 @@ ___
 
 ###  compact
 
-▸ **compact**(`object`: any): *any*
+▸ **compact**<**T**>(`object`: T): *T*
 
 Delete keys without values to make them compact
+
+**Type parameters:**
+
+▪ **T**
 
 **Parameters:**
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`object` | any | Object  |
+`object` | T | Object  |
 
-**Returns:** *any*
+**Returns:** *T*
 
 ___
 

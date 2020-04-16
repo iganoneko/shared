@@ -1,6 +1,6 @@
 "use strict";
 /**
- * Window object
+ * Window object support
  * @packageDocumentation
  */
 Object.defineProperty(exports, "__esModule", { value: true });

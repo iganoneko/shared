@@ -1,11 +1,11 @@
 "use strict";
 /**
- * Object useful features
+ * URL utilities
  * @packageDocumentation
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * URLエンコードする
+ * URL encode
  * @param value
  */
 function urlEnc(value) {
@@ -13,7 +13,7 @@ function urlEnc(value) {
 }
 exports.urlEnc = urlEnc;
 /**
- * URLデコードする
+ * URL decode
  * @param value
  */
 function urlDec(value) {

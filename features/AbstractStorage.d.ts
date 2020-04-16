@@ -15,7 +15,7 @@ export declare abstract class AbstractStorage implements IStorage {
      */
     abstract getItem(key: string): string;
     /**
-     * Delete an item
+     * Deleting items
      * @param key
      */
     abstract removeItem(key: string): void;

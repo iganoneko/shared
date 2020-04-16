@@ -33,27 +33,37 @@ export declare const isAlphaLower: (value: any) => boolean;
  */
 export declare const isAlphaUpper: (value: any) => boolean;
 /**
- * Is the string an email address
+ * The character string is an email address
  * @param value
  */
 export declare const isEmail: (value: any) => boolean;
 /**
- * Is the string like an email address
+ * A character string close to the email address
  * @param value
  */
 export declare const isEmailLike: (value: any) => boolean;
 /**
- * Is the string an HTTP URL
+ * The string is an HTTP URL
  * @param value
  */
 export declare const isHttpURL: (value: any) => boolean;
 /**
- * String is image file name
+ * String is internet image file name
  * @param value
  */
 export declare const isImageFileName: (value: any) => boolean;
 /**
- * Is the string a UUID
+ * Is the domain of the URL
+ * @param value
+ */
+export declare const isURLDomain: (value: any) => boolean;
+/**
+ * IP Address
+ * @param value
+ */
+export declare const isIPAddress: (value: any) => boolean;
+/**
+ * The string is a UUID
  * @param value
  * @param length
  */

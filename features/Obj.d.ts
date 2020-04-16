@@ -5,14 +5,14 @@
 export declare function clone(value: any): any;
 /**
  * Clone deep
- * @param data
+ * @param src
  */
-export declare function cloneDeep(data: any): any;
+export declare function cloneDeep(src: any): any;
 /**
  * Delete keys without values to make them compact
  * @param object Object
  */
-export declare function compact(object: any): any;
+export declare function compact<T>(object: T): T;
 /**
  * Sort by keys
  * @param json JSON Object

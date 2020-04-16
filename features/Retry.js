@@ -4,11 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @example
  *
  * ```
- * import newRetry from "@iganoneko/shared/features/Retry"
+ * import toRetryFunc from "@iganoneko/shared/features/Retry"
  *
- * const retryFunc = newRetry((params) => {
- *   return promise;
- * });
+ * const originalAsyncFn = (params) => {
+ *   // return promise;
+ * }
+ *
+ * const retryFunc = toRetryFunc(originalAsyncFn);
  *
  * retryFunc(params).then(() => {
  *
@@ -17,11 +19,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * });
  * ```
  *
- * @example
- *
- *     options.determineIfRetry = error => {
- *          return error.status !== 404 && !(error.status >= 500);
- *     }
+ * ```
+ * options.determineIfRetry = error => {
+ *   return error.status !== 404 && !(error.status >= 500);
+ * }
+ * ```
  */
 function default_1(execution, options) {
     if (options === void 0) { options = {}; }

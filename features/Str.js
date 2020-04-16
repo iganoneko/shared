@@ -35,27 +35,37 @@ exports.isAlphaLower = function (value) { return /^[a-z]+$/.test(String(value));
  */
 exports.isAlphaUpper = function (value) { return /^[A-Z]+$/.test(String(value)); };
 /**
- * Is the string an email address
+ * The character string is an email address
  * @param value
  */
 exports.isEmail = function (value) { return /^[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~.]+@[a-zA-Z0-9]+([-.][a-zA-Z0-9]+){1,100}[a-zA-Z0-9]$/.test(value); };
 /**
- * Is the string like an email address
+ * A character string close to the email address
  * @param value
  */
 exports.isEmailLike = function (value) { return typeof value === "string" && value.indexOf("@") !== -1; };
 /**
- * Is the string an HTTP URL
+ * The string is an HTTP URL
  * @param value
  */
 exports.isHttpURL = function (value) { return /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value); };
 /**
- * String is image file name
+ * String is internet image file name
  * @param value
  */
 exports.isImageFileName = function (value) { return /\.(gif|jpg|png)$/.test(value); };
 /**
- * Is the string a UUID
+ * Is the domain of the URL
+ * @param value
+ */
+exports.isURLDomain = function (value) { return /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(value); };
+/**
+ * IP Address
+ * @param value
+ */
+exports.isIPAddress = function (value) { return /^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/[1-9]|\/(1|2)[0-9]|\/3[0-2])?$/.test(value); };
+/**
+ * The string is a UUID
  * @param value
  * @param length
  */

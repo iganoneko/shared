@@ -18,8 +18,10 @@ String useful features
 * [isEmail](_str_.md#const-isemail)
 * [isEmailLike](_str_.md#const-isemaillike)
 * [isHttpURL](_str_.md#const-ishttpurl)
+* [isIPAddress](_str_.md#const-isipaddress)
 * [isImageFileName](_str_.md#const-isimagefilename)
 * [isNumeric](_str_.md#const-isnumeric)
+* [isURLDomain](_str_.md#const-isurldomain)
 * [isUUID](_str_.md#const-isuuid)
 * [uuid](_str_.md#uuid)
 
@@ -185,11 +187,27 @@ Name | Type | Description |
 
 ___
 
+### `Const` isIPAddress
+
+▸ **isIPAddress**(`value`: any): *boolean*
+
+IP Address
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`value` | any |   |
+
+**Returns:** *boolean*
+
+___
+
 ### `Const` isImageFileName
 
 ▸ **isImageFileName**(`value`: any): *boolean*
 
-String is image file name
+String is internet image file name
 
 **Parameters:**
 
@@ -206,6 +224,22 @@ ___
 ▸ **isNumeric**(`value`: any): *boolean*
 
 Is the string numeric
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`value` | any |   |
+
+**Returns:** *boolean*
+
+___
+
+### `Const` isURLDomain
+
+▸ **isURLDomain**(`value`: any): *boolean*
+
+Is the domain of the URL
 
 **Parameters:**
 

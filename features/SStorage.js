@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var AbstractStorage_1 = require("./AbstractStorage");
 /**
- * Input/Output to extended localStorage
+ * Input/Output to extended sessionStorage
  */
 var SStorage = /** @class */ (function (_super) {
     __extends(SStorage, _super);

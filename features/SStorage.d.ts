@@ -1,6 +1,6 @@
 import { AbstractStorage } from "./AbstractStorage";
 /**
- * Input/Output to extended localStorage
+ * Input/Output to extended sessionStorage
  */
 export declare class SStorage extends AbstractStorage {
     setItem(key: string, value: any): void;
