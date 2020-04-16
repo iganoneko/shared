@@ -1,7 +1,7 @@
 import { AbstractStorage } from "./AbstractStorage";
 
 /**
- * Input/Output to extended localStorage
+ * Input/Output to extended sessionStorage
  */
 export class SStorage extends AbstractStorage {
 

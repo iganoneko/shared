@@ -58,16 +58,22 @@ export const isEmailLike = (value: any) => typeof value === "string" && value.in
 export const isHttpURL = (value: any) => /^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value);
 
 /**
+ * String is internet image file name
+ * @param value 
+ */
+export const isImageFileName = (value: any) => /\.(gif|jpg|png)$/.test(value);
+
+/**
+ * Is the domain of the URL
+ * @param value 
+ */
+export const isURLDomain = (value: any) => /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(value);
+
+/**
  * IP Address
  * @param value 
  */
 export const isIPAddress = (value: any) => /^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/[1-9]|\/(1|2)[0-9]|\/3[0-2])?$/.test(value);
-
-/**
- * String is image file name
- * @param value 
- */
-export const isImageFileName = (value: any) => /\.(gif|jpg|png)$/.test(value);
 
 /**
  * The string is a UUID

@@ -47,10 +47,10 @@ export function cloneDeep(src) {
  * Delete keys without values to make them compact
  * @param object Object
  */
-export function compact(object: any) {
+export function compact<T>(object: T): T {
     if (object) {
         for (const key in object) {
-            const val = object[key];
+            const val = object[key] as any;
             if (isNull(val) || isUndefined(val) || val === "") {
                 delete object[key];
             }
