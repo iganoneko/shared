@@ -15,13 +15,13 @@ export interface IRetryOptions {
  * @example
  *
  * ```
- * import toRetryFunc from "@iganoneko/shared/features/Retry"
+ * import createRetryFunc from "@iganoneko/shared/features/Retry"
  *
  * const originalAsyncFn = (params) => {
- *   // return promise;
+ *  return promise;
  * }
  *
- * const retryFunc = toRetryFunc(originalAsyncFn);
+ * const retryFunc = createRetryFunc(originalAsyncFn);
  *
  * retryFunc(params).then(() => {
  *
@@ -31,9 +31,7 @@ export interface IRetryOptions {
  * ```
  *
  * ```
- * options.determineIfRetry = error => {
- *   return error.status !== 404 && !(error.status >= 500);
- * }
+ * options.determineIfRetry = error => error.status !== 404 && !(error.status >= 500);
  * ```
  */
 export default function <P, R>(execution: (params?: P) => Promise<R>, options?: IRetryOptions): (params?: any) => Promise<unknown>;

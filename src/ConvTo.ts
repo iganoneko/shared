@@ -3,7 +3,7 @@
  * @packageDocumentation
  */
 
-import { isArray, isBoolean, isDate, isNull, isObject, isString, isUndefined } from "./Type";
+import { isArray, isBoolean, isDate, isNull, isObject, isPlainObject, isString, isUndefined } from "./Type";
 
 /**
  * Converts to an integer
@@ -35,6 +35,9 @@ export function str(value: any, altValue?: string): string {
     }
     if (isUndefined(value) || isNull(value)) {
         return altValue;
+    }
+    if (isPlainObject(value)) {
+        return JSON.stringify(value);
     }
     return String(value);
 }

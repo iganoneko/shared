@@ -99,6 +99,9 @@ export class CStorage extends AbstractStorage {
         if (options.domain) {
             cookie.push("domain=" + options.domain);
         }
+        if (options.samesite) {
+            cookie.push("samesite=" + options.samesite);
+        }
         if (options.hasOwnProperty("secure")) {
             if (options.secure === true) {
                 cookie.push("secure");

@@ -74,6 +74,9 @@ var CStorage = /** @class */ (function (_super) {
         if (options.domain) {
             cookie.push("domain=" + options.domain);
         }
+        if (options.samesite) {
+            cookie.push("samesite=" + options.samesite);
+        }
         if (options.hasOwnProperty("secure")) {
             if (options.secure === true) {
                 cookie.push("secure");

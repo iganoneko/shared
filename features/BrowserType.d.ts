@@ -14,6 +14,10 @@ export interface IBrowserInfo {
     isIE11: boolean;
     /** Web browser is Microsoft Edge */
     isEdge: boolean;
+    /** Web browser is Microsoft Edge (Chromium) */
+    isEdgeHTML: boolean;
+    /** Web browser is Microsoft Edge (EdgeHTML) */
+    isEdgeCh: boolean;
     /** Web browser is Google Chrome */
     isChrome: boolean;
     /** Web browser is Safari */
@@ -32,6 +36,8 @@ export interface IBrowserInfo {
     isPC: boolean;
     /** Web browser is Tablet Computer */
     isTablet: boolean;
+    /** Web browser is Mobile Computer */
+    isMobile: boolean;
     /** Web browser is Android OS */
     isAndroid: boolean;
     /** Web browser is iOS */
@@ -44,6 +50,12 @@ export interface IBrowserInfo {
     iPod: boolean;
     /** Safari version number */
     safariVersion: number;
+    /** Chrome version number */
+    chVersion: number;
+    /** Firebox version number */
+    ffVersion: number;
+    /** Edge version number */
+    edgVersion: number;
 }
 /**
  * Detect web browser

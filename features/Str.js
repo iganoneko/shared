@@ -58,7 +58,7 @@ exports.isImageFileName = function (value) { return /\.(gif|jpg|png)$/.test(valu
  * Is the domain of the URL
  * @param value
  */
-exports.isURLDomain = function (value) { return /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(value); };
+exports.isURLDomain = function (value) { return /^[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}?(:(\d+))?$/.test(value); };
 /**
  * IP Address
  * @param value

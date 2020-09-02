@@ -6,36 +6,72 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 function detect(userAgent) {
     if (userAgent === void 0) { userAgent = navigator.userAgent; }
-    userAgent = userAgent.toLowerCase();
-    var isFF = userAgent.indexOf("firefox") > -1;
-    var isIE9 = userAgent.indexOf("msie 9.0") > -1;
-    var isIE10 = userAgent.indexOf("msie 10.0") > -1;
-    var isIE11 = userAgent.indexOf("trident") > -1 && !!userAgent.match(/rv\:11/);
-    var isEdge = !!userAgent.match(/edge?\/\d+/) && userAgent.indexOf("windows") > -1;
-    var isIE = userAgent.indexOf("msie") > -1 || isIE11;
-    var isChrome = !isEdge && (userAgent.indexOf("chrome") > -1 || userAgent.indexOf("crios") > -1);
-    var isSafari = userAgent.indexOf("safari") > -1 && !isChrome && !isEdge;
-    var isOpera = userAgent.indexOf("opera") > -1;
-    var isWindows = userAgent.indexOf("windows") > -1;
-    var isAndroid = userAgent.indexOf("android") > -1 && !isWindows;
-    var iPad = /\bipad;/i.test(userAgent);
-    var iPhone = /\biphone;/i.test(userAgent);
-    var iPod = /\bipod;/i.test(userAgent);
+    // Browser
+    var isIE9 = /\bMSIE 9(\.\d+)/.test(userAgent);
+    var isIE10 = /\bMSIE 10(\.\d+)/.test(userAgent);
+    var isIE11 = /\bTrident\//.test(userAgent) && /rv:11/.test(userAgent);
+    var isIE = /\bMSIE/.test(userAgent) || isIE11;
+    var isEdgeHTML = /\bEdge\//.test(userAgent) && /Windows/.test(userAgent);
+    var isEdgA = /\bEdgA\//.test(userAgent);
+    var isEdgiOS = /\bEdgiOS\//.test(userAgent);
+    var isEdgPC = /\bEdg\//.test(userAgent);
+    var isEdgeCh = isEdgA || isEdgiOS || isEdgPC;
+    var isEdge = isEdgeHTML || isEdgeCh;
+    var isFFiOS = /\bFxiOS\//.test(userAgent);
+    var isFF = /\bFirefox/.test(userAgent) || isFFiOS;
+    var isOperaTouch = /\bOPT\//.test(userAgent);
+    var isOpera = /\bOpera|\bOPR\//.test(userAgent) || isOperaTouch;
+    var isChromeiOS = /CriOS/.test(userAgent);
+    var isChrome = !isOpera && !isEdge && /Chrome\//.test(userAgent) || isChromeiOS;
+    var isSafari = /\bSafari/.test(userAgent) && !isChrome && !isEdge && !isEdgeCh && !isOpera;
+    // OS
+    var isWindows = /Windows/.test(userAgent);
+    var isAndroid = /\bAndroid/.test(userAgent) || isEdgA;
+    var iPad = /\biPad;/.test(userAgent);
+    var iPhone = /\biPhone;/.test(userAgent);
+    var iPod = /\biPod;/.test(userAgent);
+    var iOS = iPod || iPhone || iPad || isChromeiOS || isEdgiOS || isFFiOS;
+    // Safari Version
     var isSafari10 = false;
     var isSafari11 = false;
     var safariVersion;
     if (isSafari) {
-        var mat = /version\/(\d+)/.exec(userAgent);
+        var mat = /version\/(\d+)/i.exec(userAgent);
         if (mat) {
             safariVersion = parseInt(mat[1], 10);
             isSafari11 = safariVersion >= 11;
             isSafari10 = safariVersion < 11;
         }
     }
-    var iOS = iPod || iPhone || iPad;
+    // Chrome Version
+    var chVersion;
+    if (isChrome) {
+        var mat = /Chrome\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            chVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Firefox Version
+    var ffVersion;
+    if (isFF) {
+        var mat = /Firefox\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            ffVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Firefox Version
+    var edgVersion;
+    if (isEdgeCh) {
+        var mat = /Edg(A|iOS)?\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            edgVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Device Type
     var isTablet = iPad;
     var isSP = (iOS || isAndroid) && !isWindows && !isTablet;
     var isPC = !isSP && !isTablet;
+    var isMobile = isSP || isTablet;
     return {
         isFF: isFF,
         isIE: isIE,
@@ -43,6 +79,8 @@ function detect(userAgent) {
         isIE10: isIE10,
         isIE11: isIE11,
         isEdge: isEdge,
+        isEdgeHTML: isEdgeHTML,
+        isEdgeCh: isEdgeCh,
         isWindows: isWindows,
         isChrome: isChrome,
         isSafari: isSafari,
@@ -51,13 +89,17 @@ function detect(userAgent) {
         isOpera: isOpera,
         isSP: isSP,
         isPC: isPC,
+        isMobile: isMobile,
         isTablet: isTablet,
         isAndroid: isAndroid,
         iOS: iOS,
         iPad: iPad,
         iPhone: iPhone,
         iPod: iPod,
-        safariVersion: safariVersion
+        safariVersion: safariVersion,
+        chVersion: chVersion,
+        ffVersion: ffVersion,
+        edgVersion: edgVersion
     };
 }
 exports.detect = detect;

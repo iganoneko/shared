@@ -14,6 +14,10 @@ export interface IBrowserInfo {
     isIE11: boolean;
     /** Web browser is Microsoft Edge */
     isEdge: boolean;
+    /** Web browser is Microsoft Edge (Chromium) */
+    isEdgeHTML: boolean;
+    /** Web browser is Microsoft Edge (EdgeHTML) */
+    isEdgeCh: boolean;
     /** Web browser is Google Chrome */
     isChrome: boolean;
     /** Web browser is Safari */
@@ -32,6 +36,8 @@ export interface IBrowserInfo {
     isPC: boolean;
     /** Web browser is Tablet Computer */
     isTablet: boolean;
+    /** Web browser is Mobile Computer */
+    isMobile: boolean;
     /** Web browser is Android OS */
     isAndroid: boolean;
     /** Web browser is iOS */
@@ -44,6 +50,12 @@ export interface IBrowserInfo {
     iPod: boolean;
     /** Safari version number */
     safariVersion: number;
+    /** Chrome version number */
+    chVersion: number;
+    /** Firebox version number */
+    ffVersion: number;
+    /** Edge version number */
+    edgVersion: number;
 }
 
 /**
@@ -51,36 +63,72 @@ export interface IBrowserInfo {
  * @param userAgent userAgent.  defaults = navigator.userAgent
  */
 export function detect(userAgent = navigator.userAgent): IBrowserInfo {
-    userAgent = userAgent.toLowerCase();
-    const isFF = userAgent.indexOf("firefox") > -1;
-    const isIE9 = userAgent.indexOf("msie 9.0") > -1;
-    const isIE10 = userAgent.indexOf("msie 10.0") > -1;
-    const isIE11 = userAgent.indexOf("trident") > -1 && !!userAgent.match(/rv\:11/);
-    const isEdge = !!userAgent.match(/edge?\/\d+/) && userAgent.indexOf("windows") > -1;
-    const isIE = userAgent.indexOf("msie") > -1 || isIE11;
-    const isChrome = !isEdge && (userAgent.indexOf("chrome") > -1 || userAgent.indexOf("crios") > -1);
-    const isSafari = userAgent.indexOf("safari") > -1 && !isChrome && !isEdge;
-    const isOpera = userAgent.indexOf("opera") > -1;
-    const isWindows = userAgent.indexOf("windows") > -1;
-    const isAndroid = userAgent.indexOf("android") > -1 && !isWindows;
-    const iPad = /\bipad;/i.test(userAgent);
-    const iPhone = /\biphone;/i.test(userAgent);
-    const iPod = /\bipod;/i.test(userAgent);
+    // Browser
+    const isIE9 = /\bMSIE 9(\.\d+)/.test(userAgent);
+    const isIE10 = /\bMSIE 10(\.\d+)/.test(userAgent);
+    const isIE11 = /\bTrident\//.test(userAgent) && /rv:11/.test(userAgent);
+    const isIE = /\bMSIE/.test(userAgent) || isIE11;
+    const isEdgeHTML = /\bEdge\//.test(userAgent) && /Windows/.test(userAgent);
+    const isEdgA = /\bEdgA\//.test(userAgent);
+    const isEdgiOS = /\bEdgiOS\//.test(userAgent);
+    const isEdgPC = /\bEdg\//.test(userAgent);
+    const isEdgeCh = isEdgA || isEdgiOS || isEdgPC;
+    const isEdge = isEdgeHTML || isEdgeCh;
+    const isFFiOS = /\bFxiOS\//.test(userAgent);
+    const isFF = /\bFirefox/.test(userAgent) || isFFiOS;
+    const isOperaTouch = /\bOPT\//.test(userAgent);
+    const isOpera = /\bOpera|\bOPR\//.test(userAgent) || isOperaTouch;
+    const isChromeiOS = /CriOS/.test(userAgent);
+    const isChrome = !isOpera && !isEdge && /Chrome\//.test(userAgent) || isChromeiOS;
+    const isSafari = /\bSafari/.test(userAgent) && !isChrome && !isEdge && !isEdgeCh && !isOpera;
+    // OS
+    const isWindows = /Windows/.test(userAgent);
+    const isAndroid = /\bAndroid/.test(userAgent) || isEdgA;
+    const iPad = /\biPad;/.test(userAgent);
+    const iPhone = /\biPhone;/.test(userAgent);
+    const iPod = /\biPod;/.test(userAgent);
+    const iOS = iPod || iPhone || iPad || isChromeiOS || isEdgiOS || isFFiOS;
+    // Safari Version
     let isSafari10 = false;
     let isSafari11 = false;
     let safariVersion: number;
     if (isSafari) {
-        const mat = /version\/(\d+)/.exec(userAgent);
+        const mat = /version\/(\d+)/i.exec(userAgent);
         if (mat) {
             safariVersion = parseInt(mat[1], 10);
             isSafari11 = safariVersion >= 11;
             isSafari10 = safariVersion < 11;
         }
     }
-    const iOS = iPod || iPhone || iPad;
+    // Chrome Version
+    let chVersion: number;
+    if (isChrome) {
+        const mat = /Chrome\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            chVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Firefox Version
+    let ffVersion: number;
+    if (isFF) {
+        const mat = /Firefox\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            ffVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Firefox Version
+    let edgVersion: number;
+    if (isEdgeCh) {
+        const mat = /Edg(A|iOS)?\/(\d+)/i.exec(userAgent);
+        if (mat) {
+            edgVersion = parseInt(mat[1], 10);
+        }
+    }
+    // Device Type
     const isTablet = iPad;
     const isSP = (iOS || isAndroid) && !isWindows && !isTablet;
     const isPC = !isSP && !isTablet;
+    const isMobile = isSP || isTablet;
     return {
         isFF,
         isIE,
@@ -88,6 +136,8 @@ export function detect(userAgent = navigator.userAgent): IBrowserInfo {
         isIE10,
         isIE11,
         isEdge,
+        isEdgeHTML,
+        isEdgeCh,
         isWindows,
         isChrome,
         isSafari,
@@ -96,12 +146,16 @@ export function detect(userAgent = navigator.userAgent): IBrowserInfo {
         isOpera,
         isSP,
         isPC,
+        isMobile,
         isTablet,
         isAndroid,
         iOS,
         iPad,
         iPhone,
         iPod,
-        safariVersion
+        safariVersion,
+        chVersion,
+        ffVersion,
+        edgVersion
     };
 }

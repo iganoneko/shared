@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @example
  *
  * ```
- * import toRetryFunc from "@iganoneko/shared/features/Retry"
+ * import createRetryFunc from "@iganoneko/shared/features/Retry"
  *
  * const originalAsyncFn = (params) => {
- *   // return promise;
+ *  return promise;
  * }
  *
- * const retryFunc = toRetryFunc(originalAsyncFn);
+ * const retryFunc = createRetryFunc(originalAsyncFn);
  *
  * retryFunc(params).then(() => {
  *
@@ -20,9 +20,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * ```
  *
  * ```
- * options.determineIfRetry = error => {
- *   return error.status !== 404 && !(error.status >= 500);
- * }
+ * options.determineIfRetry = error => error.status !== 404 && !(error.status >= 500);
  * ```
  */
 function default_1(execution, options) {
@@ -36,7 +34,7 @@ function default_1(execution, options) {
     if (!options.determineIfRetry) {
         options.determineIfRetry = function () { return true; };
     }
-    if (!options.onSetupTimer) {
+    if (!options.onSetupTimer) { // for unit test
         options.onSetupTimer = function () { };
     }
     var determineIfRetry = options.determineIfRetry, onSetupTimer = options.onSetupTimer;
