@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Detect web browser
+ * userAgent analysis
  * @param userAgent userAgent.  defaults = navigator.userAgent
  */
-function detect(userAgent) {
+function parse(userAgent) {
     if (userAgent === void 0) { userAgent = navigator.userAgent; }
     // Browser
     var isIE9 = /\bMSIE 9(\.\d+)/.test(userAgent);
@@ -102,4 +102,4 @@ function detect(userAgent) {
         edgVersion: edgVersion
     };
 }
-exports.detect = detect;
+exports.parse = parse;

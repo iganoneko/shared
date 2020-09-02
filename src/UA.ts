@@ -1,5 +1,5 @@
 /**
- * Browser Information
+ * UserAgent analysis result
  */
 export interface IBrowserInfo {
     /** Web browser is FireFox */
@@ -59,10 +59,10 @@ export interface IBrowserInfo {
 }
 
 /**
- * Detect web browser
+ * userAgent analysis
  * @param userAgent userAgent.  defaults = navigator.userAgent
  */
-export function detect(userAgent = navigator.userAgent): IBrowserInfo {
+export function parse(userAgent = navigator.userAgent): IBrowserInfo {
     // Browser
     const isIE9 = /\bMSIE 9(\.\d+)/.test(userAgent);
     const isIE10 = /\bMSIE 10(\.\d+)/.test(userAgent);

@@ -1,5 +1,5 @@
 /**
- * Browser Information
+ * UserAgent analysis result
  */
 export interface IBrowserInfo {
     /** Web browser is FireFox */
@@ -58,7 +58,7 @@ export interface IBrowserInfo {
     edgVersion: number;
 }
 /**
- * Detect web browser
+ * userAgent analysis
  * @param userAgent userAgent.  defaults = navigator.userAgent
  */
-export declare function detect(userAgent?: string): IBrowserInfo;
+export declare function parse(userAgent?: string): IBrowserInfo;
